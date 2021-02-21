@@ -16,6 +16,9 @@
       <div class="bottomButton">
         <button class="mainButton" (click)='login()' [disabled] ='!isValid'>Login</button>
       </div>
+
+      <button mat-raised-button color="primary" (click)='loginWithGoogle()'>Login with Google</button>
+
       <a routerLink="/register">
         <button class="secondButton">Go to Register</button>
       </a>

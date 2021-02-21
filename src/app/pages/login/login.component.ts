@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ApiService } from '../../api.service';
+import { AngularFireAuth} from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
+import { FirebaseApp } from '@angular/fire';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +18,10 @@ export class LoginComponent implements OnInit {
 
   isValid: boolean = false;
 
-  constructor(private api: ApiService) {}
+  constructor(
+    private api: ApiService,
+    public afAuth: AngularFireAuth,
+    ) {}
 
   ngOnInit(): void {
     this.loginFormGroup = new FormGroup({
@@ -31,6 +38,9 @@ export class LoginComponent implements OnInit {
       .loginUser(this.loginFormGroup.value)
       .subscribe((res) => console.log(res));
     // console.log(this.loginFormGroup.value)
+  }
+  loginWithGoogle(){
+    this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider());
   }
 
   onChange() {
