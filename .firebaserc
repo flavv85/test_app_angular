@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-application-e0f70": {
+      "hosting": {
+        "loginApp": [
+          "test-application-e0f70"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-application-e0f70"
+  }
+}
